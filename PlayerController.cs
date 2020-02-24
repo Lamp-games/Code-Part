@@ -179,12 +179,8 @@ public class PlayerController : MonoBehaviour
 
             moveDir.Normalize();
 
-            if (firstBoostCooldown>0)
-            {
-                firstBoostCooldown -= Time.deltaTime;
-            }
 
-            if (rg.velocity.magnitude < 0.5f && firstBoostCooldown<=0f)
+            if (rg.velocity.magnitude < 0.5f && firstBoostCooldown <= 0f)
             {
                 rg.AddForce(moveDir * moveForceStart * Time.deltaTime);
                 firstBoostCooldown = 1f;
@@ -194,6 +190,14 @@ public class PlayerController : MonoBehaviour
                 rg.AddForce(moveDir * moveForceMaintain * Time.deltaTime);
             }
 
+        }
+        else
+        {
+
+            if (firstBoostCooldown > 0)
+            {
+                firstBoostCooldown -= Time.deltaTime;
+            }
         }
 
     }
